@@ -17,3 +17,4 @@ jobs:
       - run: npm run build:admin
       - run: npm run build:marketing
       - run: npm run build:api
+      - run: npm --workspace @gymsphere/api test
