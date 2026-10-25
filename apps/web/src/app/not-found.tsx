@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function NotFound(){return <main style={{minHeight:"100vh",display:"grid",placeItems:"center",padding:24,textAlign:"center"}}><div><p style={{fontWeight:800,color:"#4f46e5"}}>GYMSPHERE</p><h1>Page not found</h1><p>The page may have moved or is not available yet.</p><Link href="/" style={{color:"#4f46e5"}}>Return to dashboard</Link></div></main>}
