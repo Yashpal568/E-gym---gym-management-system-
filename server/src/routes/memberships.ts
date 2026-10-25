@@ -43,11 +43,11 @@ membershipsRouter.post("/", writeRateLimit, async (req, res, next) => {
     const allowed = res.locals.allowedBranchIds as string[];
     const { branchId, memberId, planId } = parsed.data;
     if (allowed.length && !allowed.includes(branchId)) return res.status(403).json({ error: "Branch access denied." });
-    const [branch, member, plan] = await Promise.all([
-      Branch.findOne({ _id: branchId, gymId, isActive: true }).select("_id").lean(),
-      Member.findOne({ _id: memberId, gymId, branchId, status: { $ne: "archived" } }).select("_id").lean(),
-      GymPlan.findOne({ _id: planId, gymId, branchId, isActive: true }).lean().exec()
+    const [branch, member] = await Promise.all([
+      Branch.findOne({ _id: branchId, gymId, isActive: true }).select("_id").lean().exec(),
+      Member.findOne({ _id: memberId, gymId, branchId, status: { $ne: "archived" } }).select("_id").lean().exec()
     ]);
+    const plan = await GymPlan.findOne({ _id: planId, gymId, branchId, isActive: true }).exec();
     if (!branch) return res.status(404).json({ error: "Branch not found." });
     if (!member) return res.status(404).json({ error: "Member not found in this branch." });
     if (!plan) return res.status(404).json({ error: "Active plan not found in this branch." });
