@@ -1,0 +1,17 @@
+{
+  "name": "gymsphere",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": ["apps/*", "server", "packages/*"],
+  "scripts": {
+    "dev:web": "npm --workspace @gymsphere/web run dev",
+    "build:web": "npm --workspace @gymsphere/web run build",
+    "dev:admin": "npm --workspace @gymsphere/admin run dev",
+    "build:admin": "npm --workspace @gymsphere/admin run build",
+    "dev:marketing": "npm --workspace @gymsphere/marketing run dev",
+    "build:marketing": "npm --workspace @gymsphere/marketing run build",
+    "dev:api": "npm --workspace @gymsphere/api run dev",
+    "build:api": "npm --workspace @gymsphere/api run build"
+  },
+  "engines": { "node": ">=20.9.0" }
+}
