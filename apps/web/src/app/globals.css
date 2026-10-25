@@ -1,0 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root{--background:222 40% 98%;--foreground:222 47% 11%;--card:0 0% 100%;--border:220 20% 90%;--primary:224 76% 48%;--muted:220 18% 95%;--accent:252 92% 95%}
+.dark{--background:222 47% 7%;--foreground:210 40% 96%;--card:222 35% 10%;--border:217 25% 20%;--primary:217 91% 60%;--muted:222 30% 14%;--accent:252 45% 18%}
+*{box-sizing:border-box}html{min-height:100%;scroll-behavior:smooth}body{margin:0;background:hsl(var(--background));color:hsl(var(--foreground));font-family:Arial,Helvetica,sans-serif}button,input{font:inherit}button{cursor:pointer}::selection{background:#c7d2fe;color:#1e1b4b}
