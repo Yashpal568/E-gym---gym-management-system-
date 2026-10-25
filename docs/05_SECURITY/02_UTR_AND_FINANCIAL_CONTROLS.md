@@ -1,0 +1,3 @@
+# UTR and Financial Controls
+
+Never treat a submitted UTR or screenshot as confirmed payment. Verify against receiving account records before approval. Flag reused UTRs. Rejection requires reason. Approval records actor, timestamp, verified amount, plan period and audit event. Approval must be atomic/idempotent. Store proof privately and restrict access. Financial corrections use explicit adjustments/refunds/voids. Currency uses integer paise or exact decimals.
