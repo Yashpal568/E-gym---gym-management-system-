@@ -80,8 +80,9 @@ workspaceRouter.post("/", requireUser, async (req, res, next) => {
 
 workspaceRouter.get("/:gymId/context", requireUser, async (req, res, next) => {
   try {
-    if (!Types.ObjectId.isValid(req.params.gymId)) return res.status(400).json({ error: "Invalid gym workspace ID." });
-    const membership = await GymMembership.findOne({ gymId: req.params.gymId, userId: res.locals.authUserId, status: "active" }).lean().exec() as unknown as MembershipRecord | null;
+    const gymIdParam = Array.isArray(req.params.gymId) ? req.params.gymId[0] : req.params.gymId;
+    if (typeof gymIdParam !== "string" || !Types.ObjectId.isValid(gymIdParam)) return res.status(400).json({ error: "Invalid gym workspace ID." });
+    const membership = await GymMembership.findOne({ gymId: gymIdParam, userId: res.locals.authUserId, status: "active" }).lean().exec() as unknown as MembershipRecord | null;
     if (!membership) return res.status(403).json({ error: "You do not have access to this gym workspace." });
     const gym = await Gym.findOne({ _id: membership.gymId, status: { $ne: "closed" } }).select("name slug status timezone currency").lean().exec() as unknown as GymRecord | null;
     if (!gym) return res.status(404).json({ error: "Gym workspace not found." });
