@@ -14,7 +14,7 @@ export default function Home() {
       <a className="brand" href="#"><span className="brand-mark"><Dumbbell size={21}/></span><span>Gym<span className="brand-accent">Sphere</span><small>GYM MANAGEMENT</small></span></a>
       <div className="workspace-label">WORKSPACE</div>
       <a className="nav-item active" href="#"><Activity size={18}/> Overview</a>
-      <a className="nav-item" href="#members"><Users size={18}/> Members <span className="nav-soon">Setup</span></a>
+      <a className="nav-item" href="/members"><Users size={18}/> Members <span className="nav-soon">Setup</span></a>
       <a className="nav-item" href="#memberships"><WalletCards size={18}/> Memberships</a>
       <a className="nav-item" href="#attendance"><CalendarCheck size={18}/> Attendance</a>
       <a className="nav-item" href="#payments"><CircleDollarSign size={18}/> Fees & payments</a>
