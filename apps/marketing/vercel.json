@@ -1,0 +1,1 @@
+{"version":2,"buildCommand":"cd ../.. && npm run build:marketing","installCommand":"cd ../.. && npm install"}
