@@ -1,0 +1,1 @@
+The dashboard is currently a static, deployable UI shell. Do not replace placeholders with fabricated live metrics. Connect the API only after auth, tenant resolution and persistence are implemented and tested.
