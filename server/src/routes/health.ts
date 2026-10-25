@@ -1,0 +1,1 @@
+// Health is intentionally public and must never include credentials or tenant data.
