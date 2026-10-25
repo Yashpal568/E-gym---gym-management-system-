@@ -1,3 +1,4 @@
+"use client";
 import { Activity, ArrowDownRight, ArrowUpRight, Bell, CalendarCheck, CheckCircle2, ChevronRight, CircleDollarSign, Clock3, Dumbbell, Plus, Users, WalletCards } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 const stats = [
