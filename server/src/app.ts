@@ -7,6 +7,7 @@ import { clerkAuthMiddleware } from "./middleware/clerk";
 import { workspaceRouter } from "./routes/workspace";
 import { membersRouter } from "./routes/members";
 import { branchesRouter } from "./routes/branches";
+import { apiRateLimit } from "./middleware/rate-limit";
 export const app = express();
 app.disable("x-powered-by");
 app.use(helmet());
@@ -15,6 +16,7 @@ app.use(cors({ origin(origin, callback) {
   return callback(new Error("Origin not allowed by CORS"));
 }, credentials: true }));
 app.use(express.json({ limit: "32kb" }));
+app.use("/api", apiRateLimit);
 if (clerkAuthMiddleware) app.use(clerkAuthMiddleware);
 app.use("/api/workspaces", workspaceRouter);
 app.use("/api/branches", branchesRouter);
