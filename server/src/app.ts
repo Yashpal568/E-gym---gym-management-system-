@@ -3,6 +3,8 @@ import cors from "cors";
 import helmet from "helmet";
 import { allowedOrigins } from "./config/env";
 import { errorHandler } from "./middleware/error-handler";
+import { clerkAuthMiddleware } from "./middleware/clerk";
+import { workspaceRouter } from "./routes/workspace";
 export const app = express();
 app.disable("x-powered-by");
 app.use(helmet());
@@ -11,6 +13,8 @@ app.use(cors({ origin(origin, callback) {
   return callback(new Error("Origin not allowed by CORS"));
 }, credentials: true }));
 app.use(express.json({ limit: "32kb" }));
+if (clerkAuthMiddleware) app.use(clerkAuthMiddleware);
+app.use("/api/workspaces", workspaceRouter);
 app.get("/api/health", (_req, res) => res.status(200).json({ status: "ok", service: "gymsphere-api", timestamp: new Date().toISOString() }));
 app.use((_req, res) => res.status(404).json({ error: "Route not found" }));
 app.use(errorHandler);
