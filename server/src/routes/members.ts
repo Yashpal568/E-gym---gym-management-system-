@@ -3,6 +3,7 @@ import { Types } from "mongoose";
 import { z } from "zod";
 import { requireUser } from "../middleware/clerk";
 import { requireGymMembership } from "../middleware/tenant";
+import { writeRateLimit } from "../middleware/rate-limit";
 import { Branch } from "../models/Branch";
 import { Member } from "../models/Member";
 export const membersRouter = Router();
@@ -38,7 +39,7 @@ membersRouter.get("/", async (req, res, next) => {
     return res.json({ members, pagination: { page, limit, total, pages: Math.ceil(total / limit) } });
   } catch (error) { return next(error); }
 });
-membersRouter.post("/", async (req, res, next) => {
+membersRouter.post("/", writeRateLimit, async (req, res, next) => {
   try {
     const parsed = createMemberSchema.safeParse(req.body);
     if (!parsed.success) return res.status(400).json({ error: "Invalid member details.", details: parsed.error.flatten() });
