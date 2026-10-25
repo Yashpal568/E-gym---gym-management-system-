@@ -46,7 +46,7 @@ membershipsRouter.post("/", writeRateLimit, async (req, res, next) => {
     const [branch, member, plan] = await Promise.all([
       Branch.findOne({ _id: branchId, gymId, isActive: true }).select("_id").lean(),
       Member.findOne({ _id: memberId, gymId, branchId, status: { $ne: "archived" } }).select("_id").lean(),
-      GymPlan.findOne({ _id: planId, gymId, branchId, isActive: true }).lean()
+      GymPlan.findOne({ _id: planId, gymId, branchId, isActive: true }).lean().exec()
     ]);
     if (!branch) return res.status(404).json({ error: "Branch not found." });
     if (!member) return res.status(404).json({ error: "Member not found in this branch." });
