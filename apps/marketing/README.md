@@ -1,3 +1,5 @@
-# GymSphere Marketing Website
+# GymSphere Marketing
 
-Planned framework: Next.js App Router + TypeScript. Public SEO-first pages, server-driven pricing, features, FAQ, contact/demo and policy pages. Do not expose private tenant data or unpublished content. Application scaffold will be created in Milestone 0.
+SEO-oriented Next.js marketing site. Deploy as a separate Vercel project with Root Directory `apps/marketing`, enable source files outside the root, use install command `cd ../.. && npm install` and build command `cd ../.. && npm run build:marketing`. Leave the output directory unset.
+
+The owner sign-in URL in the landing page is a placeholder and must be replaced with the actual Vercel deployment URL before public launch.
